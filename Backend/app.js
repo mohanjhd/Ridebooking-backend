@@ -35,7 +35,7 @@ if(process.env.NODE_ENV === "production") {
 
 
 app.get('/', (req, res) => {
-    res.send('Hello World');
+    res.send('OK');
 });
 
 app.use('/users', userRoutes);
