@@ -9,6 +9,7 @@ const userRoutes = require('./routes/user.routes');
 const captainRoutes = require('./routes/captain.routes');
 const mapsRoutes = require('./routes/maps.routes');
 const rideRoutes = require('./routes/ride.routes');
+const path = require('path');
 
 connectToDb();
 
@@ -24,6 +25,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+if(process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "../fronted/dist")));
+
+    app.get("*", (req,res)=>{
+        res.sendFile(path.join(__dirname, "../frontend","dist","index.html"));
+    })
+}
 
 
 app.get('/', (req, res) => {
