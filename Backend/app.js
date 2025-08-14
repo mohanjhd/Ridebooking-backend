@@ -12,7 +12,6 @@ const rideRoutes = require('./routes/ride.routes');
 
 connectToDb();
 
-app.use(cors());
 app.use(cors({
   origin: [
     "https://ridebooking-rho.vercel.app", 
