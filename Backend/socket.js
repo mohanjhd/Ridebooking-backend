@@ -6,11 +6,15 @@ let io;
 
 function initializeSocket(server) {
     io = socketIo(server, {
-        cors: {
-            origin: '*',
-            methods: [ 'GET', 'POST' ]
-        }
-    });
+    cors: {
+        origin: [
+            "https://ridebooking-frontend.vercel.app", 
+            "http://localhost:5173" 
+        ],
+        methods: ['GET', 'POST']
+    }
+});
+
 
     io.on('connection', (socket) => {
         console.log(`Client connected: ${socket.id}`);
